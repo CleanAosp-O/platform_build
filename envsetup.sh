@@ -545,20 +545,32 @@ function add_lunch_combo()
 
 # add the default one here
 add_lunch_combo aosp_arm-eng
-add_lunch_combo aosp_arm64-eng
-add_lunch_combo aosp_mips-eng
-add_lunch_combo aosp_mips64-eng
-add_lunch_combo aosp_x86-eng
-add_lunch_combo aosp_x86_64-eng
+#add_lunch_combo aosp_arm64-eng
+#add_lunch_combo aosp_mips-eng
+#add_lunch_combo aosp_mips64-eng
+#add_lunch_combo aosp_x86-eng
+#add_lunch_combo aosp_x86_64-eng
 
 function print_lunch_menu()
 {
-    local uname=$(uname)
+    local uname=$(uname -rm)
     echo
     echo "You're building on" $uname
-    echo
+    echo -e "\033[01;36m"
+    echo -e "                The" 
+    echo -e ""
+    echo -e "  _________ .__                           _____   ________    ___________________   "
+    echo -e "  \_   ___ \|  |   ____ _____    ____    /  _  \  \_____  \  /   _____/\______   \  "
+    echo -e "  /    \  \/|  | _/ __ \\__  \  /    \  /  /_\  \  /   |   \ \_____  \  |     ___/  "
+    echo -e "  \     \___|  |_\  ___/ / __ \|   |  \/    |    \/    |    \/        \ |    |      "  
+    echo -e "   \______  /____/\___  >____  /___|  /\____|__  /\_______  /_______  / |____|      " 
+    echo -e "          \/          \/     \/     \/         \/         \/        \/              "  
+    echo -e ""
+    echo -e ""
+    echo -e "                                                      Project"
+    echo -e "\033[0m"
     echo "Lunch menu... pick a combo:"
-
+    echo -e ""
     local i=1
     local choice
     for choice in ${LUNCH_MENU_CHOICES[@]}
@@ -641,6 +653,9 @@ function lunch()
     set_stuff_for_environment
     printconfig
     destroy_build_var_cache
+    echo -e ""
+    echo -e " Now make clean && make bacon"
+    echo -e ""
 }
 
 # Tab completion for lunch.
