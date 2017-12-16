@@ -3,6 +3,7 @@
 print_build_config_vars := \
   PLATFORM_VERSION_CODENAME \
   PLATFORM_VERSION \
+  CLEAN_VERSION \
   TARGET_PRODUCT \
   TARGET_BUILD_VARIANT \
   TARGET_BUILD_TYPE \
@@ -31,7 +32,7 @@ print_build_config_vars += \
   TARGET_BUILD_PDK \
   PDK_FUSION_PLATFORM_ZIP
 endif
-
+  
 # ---------------------------------------------------------------
 # the setpath shell function in envsetup.sh uses this to figure out
 # what to add to the path given the config we have chosen.
