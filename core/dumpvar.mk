@@ -1,20 +1,15 @@
 
 # List of variables we want to print in the build banner.
 print_build_config_vars := \
-  PLATFORM_VERSION_CODENAME \
   PLATFORM_VERSION \
   CLEAN_VERSION \
   TARGET_PRODUCT \
   TARGET_BUILD_VARIANT \
   TARGET_BUILD_TYPE \
   TARGET_PLATFORM_VERSION \
-  TARGET_BUILD_APPS \
   TARGET_ARCH \
   TARGET_ARCH_VARIANT \
   TARGET_CPU_VARIANT \
-  TARGET_2ND_ARCH \
-  TARGET_2ND_ARCH_VARIANT \
-  TARGET_2ND_CPU_VARIANT \
   HOST_ARCH \
   HOST_2ND_ARCH \
   HOST_OS \
@@ -22,17 +17,15 @@ print_build_config_vars := \
   HOST_CROSS_OS \
   HOST_CROSS_ARCH \
   HOST_CROSS_2ND_ARCH \
-  HOST_BUILD_TYPE \
   BUILD_ID \
-  OUT_DIR \
-  AUX_OS_VARIANT_LIST
+  OUT_DIR
 
 ifeq ($(TARGET_BUILD_PDK),true)
 print_build_config_vars += \
   TARGET_BUILD_PDK \
   PDK_FUSION_PLATFORM_ZIP
 endif
-  
+
 # ---------------------------------------------------------------
 # the setpath shell function in envsetup.sh uses this to figure out
 # what to add to the path given the config we have chosen.
