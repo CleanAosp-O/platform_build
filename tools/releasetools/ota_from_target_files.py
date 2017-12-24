@@ -460,6 +460,17 @@ else if get_stage("%(bcb_dev)s") == "3/3" then
 
   # Dump fingerprints
   script.Print("Target: %s" % target_fp)
+  script.Print("_______________________________________")
+  script.Print("  __      __                           ")
+  script.Print(" /   |   |_   /\  |\ |                 ")
+  script.Print(" \__ |__ |__ /--\ | \|                 ")
+  script.Print("       __   __  __                     ")
+  script.Print("  /\  /  \ (_  |__)                    ")
+  script.Print(" /--\ \__/ __) | Android: 8.1.0_r2     ")
+  script.Print("                 Oreo: OPM2.171019.012 ")
+  script.Print("                 Linux: 3.10.108       ")
+  script.Print("_______________________________________")
+
 
   script.AppendExtra("ifelse(is_mounted(\"/system\"), unmount(\"/system\"));")
   device_specific.FullOTA_InstallBegin()
@@ -483,7 +494,9 @@ else if get_stage("%(bcb_dev)s") == "3/3" then
   # Full OTA is done as an "incremental" against an empty source image. This
   # has the effect of writing new data from the package to the entire
   # partition, but lets us reuse the updater code that writes incrementals to
-  # do it.
+  # do it
+  script.Print(" ")
+  script.Print("Flashing Syetem..")
   system_tgt = GetImage("system", OPTIONS.input_tmp)
   system_tgt.ResetFileMap()
   system_diff = common.BlockDifference("system", system_tgt, src=None)
@@ -504,6 +517,8 @@ else if get_stage("%(bcb_dev)s") == "3/3" then
   common.ZipWriteStr(output_zip, "boot.img", boot_img.data)
 
   script.ShowProgress(0.05, 5)
+  script.Print("Flashing Kracken Kernel...")
+  script.Print(" ")
   script.WriteRawImage("/boot", "boot.img")
 
   script.ShowProgress(0.2, 10)

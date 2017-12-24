@@ -38,9 +38,9 @@ ifdef INTERNAL_BUILD_ID_MAKEFILE
   include $(INTERNAL_BUILD_ID_MAKEFILE)
 endif
 
-DEFAULT_PLATFORM_VERSION := OPM1
-MIN_PLATFORM_VERSION := OPM1
-MAX_PLATFORM_VERSION := OPM1
+DEFAULT_PLATFORM_VERSION := OPM2
+MIN_PLATFORM_VERSION := OPM2
+MAX_PLATFORM_VERSION := OPM2
 
 ALLOWED_VERSIONS := $(call allowed-platform-versions,\
   $(MIN_PLATFORM_VERSION),\
@@ -60,11 +60,6 @@ endif
 # TODO: PLATFORM_VERSION, PLATFORM_SDK_VERSION, etc. should be conditional
 # on this
 
-# This is the canonical definition of the platform version,
-# which is the version that we reveal to the end user.
-# Update this value when the platform version changes (rather
-# than overriding it somewhere else).  Can be an arbitrary string.
-
 # When you add a new PLATFORM_VERSION which will result in a new
 # PLATFORM_SDK_VERSION please ensure you add a corresponding isAtLeast*
 # method in the following java file:
@@ -74,11 +69,11 @@ endif
 # please add that PLATFORM_VERSION as well as clean up obsolete PLATFORM_VERSION's
 # in the following text file:
 # cts/tests/tests/os/assets/platform_versions.txt
-PLATFORM_VERSION.OPM1 := 8.1.0
+PLATFORM_VERSION.OPM2 := 8.1.0
 
 # These are the current development codenames, if the build is not a final
 # release build.  If this is a final release build, it is simply "REL".
-PLATFORM_VERSION_CODENAME.OPM1 := REL
+PLATFORM_VERSION_CODENAME.OPM2 := REL
 
 ifndef PLATFORM_VERSION
   PLATFORM_VERSION := $(PLATFORM_VERSION.$(TARGET_PLATFORM_VERSION))
@@ -223,5 +218,5 @@ ifndef BUILD_NUMBER
   # If no BUILD_NUMBER is set, create a useful "I am an engineering build
   # from this date/time" value.  Make it start with a non-digit so that
   # anyone trying to parse it as an integer will probably get "0".
-  BUILD_NUMBER := eng.$(shell echo $${USER:0:6}).$(shell $(DATE) +%Y%m%d.%H%M%S)
+  BUILD_NUMBER := eng.$(shell echo $${USER:0:6}).$(shell $(DATE) +%Y%m%d)
 endif
