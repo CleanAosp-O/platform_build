@@ -495,8 +495,6 @@ else if get_stage("%(bcb_dev)s") == "3/3" then
   # has the effect of writing new data from the package to the entire
   # partition, but lets us reuse the updater code that writes incrementals to
   # do it
-  script.Print(" ")
-  script.Print("Flashing Syetem..")
   system_tgt = GetImage("system", OPTIONS.input_tmp)
   system_tgt.ResetFileMap()
   system_diff = common.BlockDifference("system", system_tgt, src=None)

@@ -1,19 +1,7 @@
 # Put some miscellaneous rules here
 
-# Build system colors
+# Build system colors here
 #
-# PFX: Prefix "target C++:" in yellow
-# INS: Module "Install:" output color (cyan for ics)
-
-CL_PFX="\033[01;33m"
-CL_INS="\033[01;36m"
-CL_RED="\033[01;31m"
-CL_GRN="\033[01;32m"
-CL_YLW="\033[01;33m"
-CL_BLU="\033[01;34m"
-CL_MAG="\033[01;35m"
-CL_CYN="\033[01;36m"
-CL_RST="\033[0m"
 
 # HACK: clear LOCAL_PATH from including last build target before calling
 # intermedites-dir-for
@@ -2621,15 +2609,26 @@ $(INTERNAL_OTA_PACKAGE_TARGET): $(BUILT_TARGET_FILES_PACKAGE) \
 	   $(BUILT_TARGET_FILES_PACKAGE) $@
 
 CUSTOM_TARGET_PACKAGE := $(PRODUCT_OUT)/$(TARGET_PRODUCT)-$(CLEAN_VERSION).zip
+ZIP_LOCATION := /out/target/product/$(TARGET_PRODUCT)/$(TARGET_PRODUCT)-$(CLEAN_VERSION).zip
 
 .PHONY: otapackage bacon
 otapackage: $(INTERNAL_OTA_PACKAGE_TARGET)
 bacon: otapackage
 	$(hide) ln -f $(INTERNAL_OTA_PACKAGE_TARGET) $(CUSTOM_TARGET_PACKAGE)
 	$(hide) $(MD5SUM) $(CUSTOM_TARGET_PACKAGE) > $(CUSTOM_TARGET_PACKAGE).md5sum
-	@echo -e "SIZE: "`ls -hal $(CUSTOM_TARGET_PACKAGE) | cut -d ' ' -f 5`
- 	@echo -e "MD5: "`cat $(CUSTOM_TARGET_PACKAGE).md5sum | cut -d ' ' -f 1`
-	@echo -e "CleanAOSP Package Complete: $(CUSTOM_TARGET_PACKAGE)"
+	@echo  ""
+	@echo  "    CLEAN                    "
+	@echo  "    _____   ________    ___________________  "
+	@echo  "   /  _  \  \_____  \  /   _____/\______   \ "
+	@echo  "  /  /_\  \  /   |   \ \_____  \  |     ___/ "
+	@echo  " /    |    \/    |    \/        \ |    |     "
+	@echo  " \____|__  /\_______  /_______  / |____|     "
+	@echo  "         \/         \/        \/             "
+	@echo  "                                  Project"
+	@echo  ""
+	@echo  "ZIP: $(ZIP_LOCATION)"
+	@echo  "SIZE: "`ls -hal $(CUSTOM_TARGET_PACKAGE) | cut -d ' ' -f 5`
+	@echo  "MD5: "`cat $(CUSTOM_TARGET_PACKAGE).md5sum | cut -d ' ' -f 1`
 
 endif    # build_ota_package
 
