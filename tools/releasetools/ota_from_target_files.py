@@ -515,7 +515,7 @@ else if get_stage("%(bcb_dev)s") == "3/3" then
   common.ZipWriteStr(output_zip, "boot.img", boot_img.data)
 
   script.ShowProgress(0.05, 5)
-  script.Print("Flashing Kracken Kernel...")
+  script.Print("Flashing Kernel...")
   script.Print(" ")
   script.WriteRawImage("/boot", "boot.img")
 
