@@ -460,16 +460,16 @@ else if get_stage("%(bcb_dev)s") == "3/3" then
 
   # Dump fingerprints
   script.Print("Target: %s" % target_fp)
-  script.Print("_______________________________________")
-  script.Print("  __      __                           ")
-  script.Print(" /   |   |_   /\  |\ |                 ")
-  script.Print(" \__ |__ |__ /--\ | \|                 ")
-  script.Print("       __   __  __                     ")
-  script.Print("  /\  /  \ (_  |__)                    ")
-  script.Print(" /--\ \__/ __) | Android: 8.1.0_r2     ")
-  script.Print("                 Oreo: OPM2.171019.012 ")
-  script.Print("                 Linux: 3.10.108       ")
-  script.Print("_______________________________________")
+  script.Print("________________________________________")
+  script.Print("  __      __                            ")
+  script.Print(" /   |   |_   /\  |\ |                  ")
+  script.Print(" \__ |__ |__ /--\ | \|                  ")
+  script.Print("       __   __  __                      ")
+  script.Print("  /\  /  \ (_  |__)                     ")
+  script.Print(" /--\ \__/ __) |  Android: 8.1.0_r7     ")
+  script.Print("                  Oreo: OPM3.171019.013 ")
+  script.Print("                  Linux: 3.10.108       ")
+  script.Print("________________________________________")
 
 
   script.AppendExtra("ifelse(is_mounted(\"/system\"), unmount(\"/system\"));")
